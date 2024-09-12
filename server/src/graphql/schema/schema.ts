@@ -12,7 +12,7 @@ export const schema = `#graphql
         _id: ID!
         title: String!
         description: String!
-        instructor: String!
+        instructor: User!
         price: Float!
         rating: Float!
         image: String!
@@ -21,5 +21,6 @@ export const schema = `#graphql
     type Query {
         users: [User]
         courses: [Course]
+        course(_id: ID!): Course
     }
 `;
