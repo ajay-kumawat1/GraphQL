@@ -9,16 +9,4 @@ export const connectGraphQL = () => {
   });
 
   return server;
-
-  // startStandaloneServer(server, {
-  //   listen: {
-  //     port,
-  //   },
-  // })
-  //   .then(() => {
-  //     console.log(`Server is working on Port: ${port} in ${envMode} Mode.`);
-  //   })
-  //   .catch((error) => {
-  //     console.error(error);
-  //   });
 };
