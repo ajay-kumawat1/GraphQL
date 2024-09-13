@@ -19,19 +19,36 @@ const port = Number(process.env.PORT) || 3000;
 const mongoURI = process.env.MONGO_URI!;
 connectdb(mongoURI);
 
+const Users: {
+  name: string;
+  email: string;
+  password: string;
+  isAdmin: boolean;
+} [] = [];
+
 // Apollo Server Configuration
 const server = new ApolloServer({
   typeDefs: schema,
   resolvers: {
+    Mutation: {
+      newUser: (parent, { name, email, password, isAdmin }) => {
+        Users.push({ name, email, password, isAdmin });
+        return "New User Created";
+      }
+    },
+
     Query: {
       users: getAllUsers,
       courses: getAllCourses,
       course: getCourse,
+      sampleUsers: () => {
+        return Users;
+      },
     },
     Course: {
       instructor: async (course) => {
         return await getUserById(course.instructor);
-      }
+      },
     },
   },
 });

@@ -18,9 +18,21 @@ export const schema = `#graphql
         image: String!
     }
 
+    type SampleUser {
+        name: String!
+        email: String!
+        password: String!
+        isAdmin: Boolean!
+    }
+
     type Query {
         users: [User]
         courses: [Course]
         course(_id: ID!): Course
+        sampleUsers: [SampleUser] 
+    }
+
+    type Mutation {
+        newUser(name: String!, email: String!, password: String!, isAdmin: Boolean!): String
     }
 `;
