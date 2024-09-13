@@ -1,5 +1,14 @@
 import mongoose from "mongoose";
 
+type ICourse = {
+  title: string;
+  description: string;
+  instructor: string;
+  price: number;
+  rating: number;
+  image: string;
+};
+
 const courseSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -27,4 +36,6 @@ const courseSchema = new mongoose.Schema({
   },
 });
 
-export const Course = mongoose.model("Course", courseSchema);
+export const Course = mongoose.model<ICourse>("Course", courseSchema);
+
+export type { ICourse };
